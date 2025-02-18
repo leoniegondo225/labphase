@@ -1,9 +1,11 @@
 "use client"
-import { headers } from "next/headers"
+import GoogleLogin from "@/components/googleLogin"
 import Link from "next/link"
-import { useState } from "react"
+import { Toast } from "primereact/toast";
+import { useRef, useState } from "react"
 
 function Login(){
+     const toast = useRef<Toast>(null);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage]= useState("")
@@ -14,7 +16,7 @@ function Login(){
         setMessage("")
         try {
             const req = await fetch("/api/login", {
-                headers: {"content-type": "application.json"},
+                headers: {"content-type": "application/json"},
                 method: "Post",
                 body: JSON.stringify({email, password})
         })
@@ -23,12 +25,29 @@ function Login(){
         if(res&& res.data){
             setMessage("utilisateur créer avec succès")
             console.log(res.data)
+            toast.current?.show({
+                severity: "success",
+                summary: "Inscription réussie",
+                detail: "Votre connexion a été éffectuée avec succès.",
+                life: 5000,
+            });
             localStorage.setItem("users", JSON.stringify(res.data))
         }else{
-            setMessage
+            toast.current?.show({
+                severity: "error",
+                summary: "Erreur",
+                detail: "oups une erreur ",
+                life: 3000,
+            });
         }
         } catch (error) {
             console.log(error)
+            toast.current?.show({
+                severity: "error",
+                summary: "Erreur",
+                detail: "oups une erreur ",
+                life: 3000,
+            });
         }
     }
 
@@ -48,7 +67,7 @@ function Login(){
                             
                             </div>
                             <div className="mb-4">
-                            <input type="password" name="password" className="form-control" id="password" placeholder="password" required onChange={(e) => setPassword} />
+                            <input type="password" name="password" className="form-control" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
                             
                             </div>
                                 <div className="col-lg-12 text-center">
@@ -60,9 +79,9 @@ function Login(){
                                         <Link href="sign-up" className="fw-bold">S'inscrire</Link>
                                     </div>
                                 </div>
-                                <div>
-                                    <button className="btn btn-warning col-lg-12"> Se connecter avec Google</button>
-                                </div>
+                                
+                                    <GoogleLogin/>
+                                
                         </form>
 
                         

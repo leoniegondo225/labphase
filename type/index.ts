@@ -5,6 +5,9 @@ export type Inputs = {
   pays?: string;
   ville?: string;
   adresse?: string;
+  entreprise?: string;
+  typeEntreprise?: string;
+  typearticle?: string;
   email?: string;
   typeCompte?: string;
   password?: string;

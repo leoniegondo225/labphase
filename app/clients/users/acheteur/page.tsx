@@ -1,10 +1,13 @@
 "use client"
 
+import GoogleLogin from "@/components/googleLogin";
 import Link from "next/link";
-import { useState } from "react"
+import { useRef, useState } from "react"
+import { Toast } from 'primereact/toast';
 
 
 function Inscription() {
+    const toast = useRef<Toast>(null);
     const [nom, setNom] = useState("");
     const [prenom, setPrenom] = useState("");
     const [sexe, setSexe] = useState("");
@@ -15,10 +18,11 @@ function Inscription() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-
+const [load, setLoad]= useState(false)
     const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setMessage("")
+        setLoad(true)
         try {
             const data = {
                 nom,
@@ -39,20 +43,37 @@ function Inscription() {
             })
             const res = await req.json()
             if (res.data) {
+                setLoad(false)
                 console.log(res.data)
+                toast.current?.show({
+                    severity: "success",
+                    summary: "Inscription réussie",
+                    detail: "Votre compte a été créé avec succès.",
+                    life: 5000,
+                });
                 return res.data
             }
+            
         } catch (error) {
             console.log(error)
+            toast.current?.show({
+                severity: "error",
+                summary: "Erreur",
+                detail: "oups une erreur ",
+                life: 3000,
+            });
+            setLoad(false)
         }
     }
 
     return (
-        <>
-            <div className="mt-2">
-                <div className="container hero">
-                    <div className="row pt-2 align-items-center justify-centent-center me-2">
-                        <div className="col-lg-6 ">
+            <div className="my-4 ">
+                 <Toast ref={toast} />
+                <div className="container ">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-10 hero rounded-4 p-4">
+                        <div className="row my-2 align-items-center">
+                        <div className="col-lg-7 ">
                             <div>
                                 <h1 className="text-light">Bienvenu dans le monde de la technologie</h1>
                                 <p className="pt-3 text-light">Rejoignez-nous dès aujourd'hui et découvrez une sélection unique d'appareils électroniques dernier cri. Profitez de nos offres exclusives et faites partie d'une communauté de passionnés toujours à la recherche des meilleures innovations technologiques.</p>
@@ -60,8 +81,8 @@ function Inscription() {
                             </div>
                         </div>
 
-                        <div className="col-lg-6 text-center  mb-5">
-                            <h2 className="fw-bold pt-3">Inscription</h2>
+                        <div className="col-lg-5 text-center">
+                            <h2 className="fw-bold">Inscription</h2>
                             <form onSubmit={(e) => submitForm(e)}>
                                 
                                 <div className="row items-center mb-2 pt-3">
@@ -118,30 +139,39 @@ function Inscription() {
                                     <input type="password" className="form-control" name="mot de passe" id="password" placeholder="password" required onChange={(e) => setPassword(e.target.value)} />
                                     <label htmlFor="password">Mot de passe</label>
                                 </div>
-                                <div className="mb-3">
+                                
+                                {
+                    !load ? (
+                        <div className="mb-3">
                                     <button className="btn btn-primary w-100 text-center col-lg-12" type="submit" >
                                         S'inscrire
                                     </button>
                                 </div>
+                    ) : (
+                        <div className="col-lg-12 mb-3">
+                            <p className='fw-bold text-center p-2 btn btn-outline-primary form-control h5'>
+                                <i className=" fas fa-spinner fa-spin me-2 "></i>
+                                Veillez patienter quelque instants !</p>
+                        </div>
+                    )
+                }
                                 <div className="row">
                                     <div className="d-flex justify-content-between">
                                         <p className="text-light">Déjà un compte?</p>
-                                        <Link href="login" className="fw-bold">Se connecter</Link>
+                                        <Link href="/clients/login" className="fw-bold">Se connecter</Link>
                                     </div>
                                 </div>
-                                <div>
-                                    <button className="btn btn-warning col-lg-12"> Se connecter avec Google</button>
-                                </div>
+                            
+                                    <GoogleLogin/>
+                                    
+            
                             </form>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-        </>
     )
 }
 
