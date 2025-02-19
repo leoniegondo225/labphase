@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-light shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-dark nav shadow-sm container ">
       <div className="container">
         {/* Menu Hamburger */}
         <button
@@ -23,13 +23,14 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link className="navbar-brand" href="/">
-          <Image
-            src="/logo.png"
+        <h1>ACHIONI</h1>
+          {/* <Image
+            src="/img/logo.webp"
             alt="Logo"
-            width={50}
-            height={50}
+            width={80}
+            height={80}
             className="rounded-circle"
-          />
+          /> */}
         </Link>
 
         {/* Contenu de la Navbar */}
@@ -66,7 +67,10 @@ const Navbar = () => {
             <Link href="/faq" className="text-warning"><FaQuestionCircle size={24} /></Link>
             <Link href="/auth" className="text-warning"><FaUser size={24} /></Link>
             <Link href="/panier" className="text-warning"><FaShoppingCart size={24} /></Link>
-            <Link href="/search" className="text-warning"><FaSearch size={24} /></Link>
+            <div className="">
+              <Link href="/clients/users/acheteur" className="btn btn-outline-warning me-2">S'inscrire</Link>
+              <Link href="/clients/login" className="btn btn-warning " >Se connecter</Link>
+            </div>
           </div>
         </div>
       </div>

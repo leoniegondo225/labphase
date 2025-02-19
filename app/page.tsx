@@ -2,17 +2,17 @@
 import Link from 'next/link';
 import Carousel from 'react-bootstrap/Carousel';
 
+
 function Home() {
   return (
     <div className="" id='carousel-container'>
       <Carousel data-bs-theme="dark" >
       <Carousel.Item>
        <div className=" img1 pt-5">
-        <h2 className='text-center text-light display-3 fw-bold'>bienvenue sur Janpan-x</h2>
-        <p className='text-center text-light pt-2'>Nous sommes ravis de vous accueillir dans notre boutique en ligne. <br /> Que vous soyez à la recherche des dernières tendances ou d'offres exclusives, vous trouverez ici une sélection de produits soigneusement choisis <br /> pour répondre à vos besoins.
-        Explorez, profitez, et faites de belles découvertes !</p>
+        <h2 className='text-center orange display-3 fw-bold py-3'>L'electronique Achioni</h2>
+        <p className='text-center text-light py-3 h5'>Bienvenue sur notre boutique en ligne, où technologie et qualité se rencontrent pour vous <br /> offrir le meilleur de l’électronique ! Parcourez nos produits et commencez dès maintenant à trouver <br /> ce qui vous correspond</p>
         <div className='text-center pt-3'>
-        <Link href="/clients/users/acheteur" className="btn btn-warning ">Commencer</Link>
+        <Link href="/accueil" className="btn btn-warning btn-lg ">Commencer</Link>
         </div>
        </div>
        <Carousel.Caption>
@@ -21,15 +21,24 @@ function Home() {
       </Carousel.Item>
       <Carousel.Item>
         <div className=" img2 pt-5">
-          <h2 className='text-center display-3 fw-bold text-light'>bienvenue sur Janpan-x</h2>
-          <p className='text-center text-light pt-2'>Nous sommes heureux de vous compter parmi nos vendeurs. <br /> Vous avez désormais la possibilité de partager vos produits avec une large communauté de clients. <br /> Gagnez en visibilité et développez votre activité grâce à nos outils simples et efficaces.
-          C’est le moment de briller et de faire croître votre entreprise avec nous !</p>
+          <h2 className='text-center display-3 fw-bold text-light py-3'>L'electronique Achioni</h2>
+          <p className='text-center text-light pt-2 h5'>Explorez notre sélection d'articles électroniques de qualité supérieure et profitez des <br /> dernières innovations à portée de main</p>
           <div className='text-center pt-3'>
-        <Link href="/clients/users/vendeur" className="btn btn-warning ">Commencer</Link>
+        <Link href="/accueil" className="btn btn-warning btn-lg ">Commencer</Link>
         </div>
         </div>
         <Carousel.Caption>
-          
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <div className=" img3 pt-5">
+          <h2 className='text-center display-3 fw-bold text-warning py-3'>L'electronique Achioni</h2>
+          <p className='text-center text-light pt-2 h5'>Explorez notre sélection d'articles électroniques de qualité supérieure et profitez des <br /> dernières innovations à portée de main</p>
+          <div className='text-center pt-3'>
+        <Link href="/accueil" className="btn btn-warning btn-lg ">Commencer</Link>
+        </div>
+        </div>
+        <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

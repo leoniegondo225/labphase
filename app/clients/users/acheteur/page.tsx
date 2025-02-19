@@ -67,11 +67,11 @@ const [load, setLoad]= useState(false)
     }
 
     return (
-            <div className="my-4 ">
+            <div className=" bg1">
                  <Toast ref={toast} />
                 <div className="container ">
                     <div className="row justify-content-center">
-                        <div className="col-lg-10 hero rounded-4 p-4">
+                        <div className="col-lg-10 hero rounded-4 p-4 my-4">
                         <div className="row my-2 align-items-center">
                         <div className="col-lg-7 ">
                             <div>
@@ -81,7 +81,7 @@ const [load, setLoad]= useState(false)
                             </div>
                         </div>
 
-                        <div className="col-lg-5 text-center">
+                        <div className="col-lg-5 text-center shadow card">
                             <h2 className="fw-bold">Inscription</h2>
                             <form onSubmit={(e) => submitForm(e)}>
                                 
@@ -157,7 +157,7 @@ const [load, setLoad]= useState(false)
                 }
                                 <div className="row">
                                     <div className="d-flex justify-content-between">
-                                        <p className="text-light">Déjà un compte?</p>
+                                        <p className="text-secondary">Déjà un compte?</p>
                                         <Link href="/clients/login" className="fw-bold">Se connecter</Link>
                                     </div>
                                 </div>

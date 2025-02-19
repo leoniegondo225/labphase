@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { FaEnvelope, FaFacebook, FaFingerprint, FaGithub, FaHome, FaInstagramSquare, FaLinkedin, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaFingerprint, FaGem, FaGithub, FaHome, FaInstagramSquare, FaLinkedin, FaPhone } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
@@ -10,7 +10,7 @@ const Footer = () => {
    return(
     <footer className= "text-center text-lg-start bg-body-tertiary text-muted">
   
-  <section className= "d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  <section className= "d-flex justify-content-center justify-content-lg-between p-4 border-bottom  ">
     <div className= "me-5 d-none d-lg-block">
       <span>Get connected with us on social networks:</span>
     </div>
@@ -47,8 +47,8 @@ const Footer = () => {
       <div className= "row mt-3">
         
         <div className= "col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 className= "text-uppercase fw-bold mb-4">
-            <i className= "fas fa-gem me-3"></i>Company name
+          <h6 className= "text-uppercase fw-bold mb-4 text-warning">
+          <FaGem className="me-2"/>Company name
           </h6>
           <p>
             Here you can use rows and columns to organize your footer content. Lorem ipsum
@@ -60,7 +60,7 @@ const Footer = () => {
         
         <div className= "col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           
-          <h6 className= "text-uppercase fw-bold mb-4">
+          <h6 className= "text-uppercase fw-bold mb-4 text-warning">
             Products
           </h6>
           <p>
@@ -81,7 +81,7 @@ const Footer = () => {
         
         <div className= "col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           
-          <h6 className= "text-uppercase fw-bold mb-4">
+          <h6 className= "text-uppercase fw-bold mb-4 text-warning">
             Useful links
           </h6>
           <p>
@@ -101,7 +101,7 @@ const Footer = () => {
 
         
         <div className= "col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <h6 className= "text-uppercase fw-bold mb-4">Contact</h6>
+          <h6 className= "text-uppercase fw-bold mb-4 text-warning">Contact</h6>
           <p><FaHome className="me-3 text-warning" /> New York, NY 10012, US</p>
           <p>
           <FaEnvelope className="me-3 text-warning" />
@@ -118,7 +118,7 @@ const Footer = () => {
    
 
 
-  <div className= "text-center p-4">
+  <div className= "text-center p-4 bg-dark text-light">
     © 2021 Copyright:
     <Link className= "text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</Link>
   </div>
