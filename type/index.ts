@@ -13,3 +13,13 @@ export type Inputs = {
   password?: string;
   tel?: string;
 };
+
+export type ProductType = {
+  id?: string;
+  idvendeur?: string;
+  namstore?: string; 
+  name?: string;
+  price?: number;
+  image?: string;
+  description?: string;
+}

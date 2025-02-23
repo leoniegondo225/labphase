@@ -32,7 +32,7 @@ function Login() {
                     detail: "Votre connexion a été éffectuée avec succès.",
                     life: 5000,
                 });
-                localStorage.setItem("users", JSON.stringify(res.data))
+                
             } else {
                 toast.current?.show({
                     severity: "error",

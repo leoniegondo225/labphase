@@ -50,7 +50,8 @@ const [load, setLoad]= useState(false)
                     summary: "Inscription réussie",
                     detail: "Votre compte a été créé avec succès.",
                     life: 5000,
-                });
+                })
+                localStorage.setItem("users", JSON.stringify(res.data))
                 return res.data
             }
             

@@ -2,7 +2,7 @@
 
 import GoogleLogin from "@/components/googleLogin";
 import Link from "next/link";
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Toast } from 'primereact/toast';
 
 
@@ -58,6 +58,7 @@ function Vendeur() {
                     detail: "Votre compte a été créé avec succès.",
                     life: 5000,
                 });
+                localStorage.setItem("users", JSON.stringify(res.data))
                 return res.data
             }
 
