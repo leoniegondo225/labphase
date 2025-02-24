@@ -1,28 +1,34 @@
 import { database } from "@/db/firebase";
 import { ProductType } from "@/type";
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, query } from "firebase/firestore";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
-    try {
-        const req = query(collection(database, "produit"));
-        const snap = await getDocs(req)
-        if (snap) {
-            let data: ProductType[] = []
-            snap.forEach((doc) => {
-                data.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    price: doc.data().price,
-                    image: doc.data().image,
-                    description: doc.data().description 
-                })
-            })
-            if (data && data.length > 0) return NextResponse.json(data)
-                else return NextResponse.json("Pas de produit")
-        }
-    } catch (error) {
-        console.log(error)
-        return NextResponse.json("Erreur produite pendant la recupération des produits")
+export const GET = async (req: Request) => {
+  try {
+    const produitsQuery = query(collection(database, "produit"));
+    const snap = await getDocs(produitsQuery);
+
+    if (!snap.empty) {
+      // Mapping des documents récupérés pour créer un tableau de produits
+      const data = snap.docs.map((doc) => {
+        const docData = doc.data();
+        return {
+          nomProduit: docData.nomProduit,
+          prix: docData.prix,
+          devise: docData.devise,
+          qte: docData.qte,
+          lieu: docData.lieu,
+          description: docData.description,
+        };
+      });
+
+      return NextResponse.json(data.length > 0 ? data : { message: "Pas de produit disponible." });
+    } else {
+      return NextResponse.json({ message: "Aucun produit trouvé." }, { status: 404 });
     }
-}
+  } catch (error) {
+    console.error("Erreur lors de la récupération des produits :", error);
+    return NextResponse.json({ error: "Erreur lors de la récupération des produits" }, { status: 500 });
+  }
+};
+ù

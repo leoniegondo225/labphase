@@ -2,15 +2,11 @@
 
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { CartItem } from "@/type";
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card, Alert } from "react-bootstrap";
 
-type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-};
+
 
 const CheckoutPage = () => {
   const [formData] = useState({
@@ -49,6 +45,7 @@ const CheckoutPage = () => {
 
   return (
     <><Navbar></Navbar>
+    <div className="bgcheckout">
     <Container className="my-5">
       <Row>
         <Col md={6} className="mb-4">
@@ -59,14 +56,14 @@ const CheckoutPage = () => {
                 <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
                   <Card.Text>Quantité : {item.quantity}</Card.Text>
-                  <Card.Text>Prix : Number({item.price.toFixed(2)}) €</Card.Text>
+                  <Card.Text>Prix : Number({item.price.toFixed(2)}) Fcfa</Card.Text>
                 </Card.Body>
               </Card>
             ))
           ) : (
             <p className="text-muted">Votre panier est vide.</p>
           )}
-          <h4>Total : {calculateTotal()} €</h4>
+          <h4>Total : {calculateTotal()} Fcfa</h4>
         </Col>
 
         <Col md={6}>
@@ -76,13 +73,14 @@ const CheckoutPage = () => {
               <Form.Label>Nom Complet</Form.Label>
               <Form.Control type="text" name="name" value={formData.name} required />
             </Form.Group>
-            <Button variant="success" type="submit" className="w-100">
+            <Button variant="warning" type="submit" className="w-100 text-light">
               Valider la Commande
             </Button>
           </Form>
         </Col>
       </Row>
     </Container>
+    </div>
     <Footer></Footer></>
   );
 };

@@ -7,6 +7,8 @@ import { HeroSection } from '@/components/home/heroSection';
 import Delivre from '@/components/home/delivre';
 import ProductList from '@/components/home/produit';
 import Vendeur from '@/components/vendeur';
+import SellerSection from '@/components/home/vend';
+import Soldes from '@/components/home/solde';
 
 
 function page() {
@@ -16,9 +18,11 @@ function page() {
 
       <HeroSection />
       <Delivre />
+      <Soldes/>
       
       <ProductList />
       <Vendeur/>
+      <SellerSection/>
       
 
 

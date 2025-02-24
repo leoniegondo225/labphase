@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Inputs = {
   nom?: string;
   prenom?: string;
@@ -15,6 +17,7 @@ export type Inputs = {
 };
 
 export type ProductType = {
+  stockQuantity: ReactNode;
   id?: string;
   idvendeur?: string;
   namstore?: string; 
@@ -23,3 +26,13 @@ export type ProductType = {
   image?: string;
   description?: string;
 }
+
+
+
+export type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+};

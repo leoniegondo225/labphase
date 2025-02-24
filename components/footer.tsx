@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 const Footer = () => {
 
    return(
-    <footer className= "text-center text-lg-start bg-body-tertiary text-muted">
+    <footer className= "text-center text-lg-start bg-dark text-light">
   
   <section className= "d-flex justify-content-center justify-content-lg-between p-4 border-bottom  ">
     <div className= "me-5 d-none d-lg-block">
@@ -21,7 +21,7 @@ const Footer = () => {
       <Link href="" className= "me-4 text-primary ">
       <FaFacebook className="fs-3"/>
       </Link>
-      <Link href="" className= "me-4 text-dark">
+      <Link href="" className= "me-4 text-light">
       <FaSquareXTwitter className="fs-3" />
       </Link>
       <Link href="" className= "me-4 text-reset">
@@ -48,11 +48,11 @@ const Footer = () => {
         
         <div className= "col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <h6 className= "text-uppercase fw-bold mb-4 text-warning">
-          <FaGem className="me-2"/>Company name
+          <FaGem className="me-2"/>AchiOni
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+          Votre boutique en ligne pour les produits électroniques de qualité. Trouvez tout ce dont vous avez besoin au meilleur prix !
+          
           </p>
         </div>
         
@@ -61,19 +61,19 @@ const Footer = () => {
         <div className= "col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           
           <h6 className= "text-uppercase fw-bold mb-4 text-warning">
-            Products
+          Produits
           </h6>
           <p>
-            <Link href="#!" className= "text-reset  text-decoration-none">Angular</Link>
+            <Link href="#!" className= "text-reset  text-decoration-none">Ordinateurs</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">React</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Téléphones</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Vue</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Accessoires</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Laravel</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Composants</Link>
           </p>
         </div>
         
@@ -82,19 +82,19 @@ const Footer = () => {
         <div className= "col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           
           <h6 className= "text-uppercase fw-bold mb-4 text-warning">
-            Useful links
+          Liens utiles
           </h6>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Pricing</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Tarifs</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Settings</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Paramètres</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Orders</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Commandes</Link>
           </p>
           <p>
-            <Link href="#!" className= "text-reset text-decoration-none">Help</Link>
+            <Link href="#!" className= "text-reset text-decoration-none">Aide</Link>
           </p>
         </div>
         
@@ -102,13 +102,13 @@ const Footer = () => {
         
         <div className= "col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <h6 className= "text-uppercase fw-bold mb-4 text-warning">Contact</h6>
-          <p><FaHome className="me-3 text-warning" /> New York, NY 10012, US</p>
+          <p><FaHome className="me-3 text-warning" /> Abidjan, Cocody, Côte d'Ivoire</p>
           <p>
           <FaEnvelope className="me-3 text-warning" />
-            info@example.com
+            achioni@gmail.com
           </p>
-          <p><FaPhone className="me-3 text-warning" /> + 01 234 567 88</p>
-          <p><FaFingerprint className="me-3 text-warning" /> + 01 234 567 89</p>
+          <p><FaPhone className="me-3 text-warning" /> + 225 057 548 888</p>
+          <p><FaFingerprint className="me-3 text-warning" /> + 225 075 546 554</p>
         </div>
         
       </div>
@@ -120,7 +120,7 @@ const Footer = () => {
 
   <div className= "text-center p-4 bg-dark text-light">
     © 2021 Copyright:
-    <Link className= "text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</Link>
+    <Link className= "text-reset fw-bold" href="#">Boutique Electonique</Link>
   </div>
 
 </footer>
