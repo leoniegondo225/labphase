@@ -31,9 +31,20 @@ function FormProfilVendeur() {
                                 <div className="row">
                                     <div className="col-lg-3 mb-3">
                                         <select className="form-select p-2 mt-4" aria-label="Default select example" >
-                                            <option >Numero</option>
-                                            <option value="1">Category 1</option>
-                                            <option value="2">Category 2</option>
+                                            <option >Indificatif</option>
+                                            <option value="+33">🇫🇷 +33 (France)</option>
+                                            <option value="+1">🇺🇸 +1 (USA)</option>
+                                            <option value="+44">🇬🇧 +44 (Royaume-Uni)</option>
+                                            <option value="+225">🇨🇮 +225 (Côte d'Ivoire)</option>
+                                            <option value="+237">🇨🇲 +237 (Cameroun)</option>
+                                            <option value="+221">🇸🇳 +221 (Sénégal)</option>
+                                            <option value="+212">🇲🇦 +212 (Maroc)</option>
+                                            <option value="+216">🇹🇳 +216 (Tunisie)</option>
+                                            <option value="+213">🇩🇿 +213 (Algérie)</option>
+                                            <option value="+229">🇧🇯 +229 (Bénin)</option>
+                                            <option value="+49">🇩🇪 +49 (Allemagne)</option>
+                                            <option value="+39">🇮🇹 +39 (Italie)</option>
+                                            <option value="+34">🇪🇸 +34 (Espagne)</option>
                                         </select>
                                     </div>
                                     <div className="col-lg-9 mt-4">

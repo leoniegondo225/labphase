@@ -18,7 +18,8 @@ export const GET = async (req: Request) => {
           devise: docData.devise,
           qte: docData.qte,
           lieu: docData.lieu,
-          description: docData.description,
+          namestore:docData.namestore,
+          descriptionProduit: docData.descriptionProduit,
         };
       });
 
@@ -31,4 +32,3 @@ export const GET = async (req: Request) => {
     return NextResponse.json({ error: "Erreur lors de la récupération des produits" }, { status: 500 });
   }
 };
-ù

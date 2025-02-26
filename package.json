@@ -13,6 +13,7 @@
     "@mantine/dropzone": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
     "@tabler/icons-react": "^3.30.0",
+    "@uploadcare/react-uploader": "^1.5.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
     "firebase": "^11.3.1",

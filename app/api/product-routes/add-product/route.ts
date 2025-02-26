@@ -5,9 +5,10 @@ import { NextResponse } from "next/server"
 
 export const POST = async (req: Request) => {
     try {
-        const { nomProduit, codeProduit, descriptionProduit, prix, typeVente, devise ,date} = await req.json()
-        const data = { nomProduit, codeProduit, descriptionProduit, prix, typeVente, devise ,date}
-        const productCollection = await addDoc(collection(database, "produits"), data)
+        const data = await req.json()
+        console.log(data)
+    
+        const productCollection = await addDoc(collection(database, "produit"), data)
         if (productCollection) {
             return NextResponse.json({ data })
         } else {

@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import Image from "next/image";
 
-const SellerSection = () => {
+const SectionVendeur = () => {
   return (
     <section
       className="seller-section py-5 text-white text-center"
@@ -50,4 +50,4 @@ const SellerSection = () => {
   );
 };
 
-export default SellerSection;
+export default SectionVendeur;

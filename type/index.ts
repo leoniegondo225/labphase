@@ -17,14 +17,15 @@ export type Inputs = {
 };
 
 export type ProductType = {
-  stockQuantity: ReactNode;
+  nomProduit?: string;
+  qte?: number;
   id?: string;
   idvendeur?: string;
-  namstore?: string; 
-  name?: string;
-  price?: number;
-  image?: string;
-  description?: string;
+  namestore?: string; 
+  prix?: number;
+  photo?: string;
+  descriptionProduit?: string;
+  
 }
 
 

@@ -20,7 +20,7 @@ const Soldes = () => {
 
   function calculateTimeLeft() {
     const now = new Date();
-    const difference = saleEndTime - now;
+    const difference = saleEndTime.getTime() - now.getTime();
     if (difference <= 0) return null;
 
     return {
@@ -50,7 +50,7 @@ const Soldes = () => {
     <section
       className="sales-section position-relative py-5 text-white"
       style={{
-        backgroundImage: "url('/img/sales-background.jpg')",
+        backgroundImage: "url('/img/Solde.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -63,11 +63,11 @@ const Soldes = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="fw-bold"
+              className="fw-bold text-dark"
             >
               🔥 Profitez des Soldes Exceptionnelles !
             </motion.h2>
-            <p className="lead">
+            <p className="lead text-dark">
               Il y a souvent des soldes sur notre site. Ne ratez pas ces offres limitées !
             </p>
           </Col>
@@ -76,7 +76,7 @@ const Soldes = () => {
         {timeLeft ? (
           <Row className="text-center mb-4">
             <Col>
-              <h4 className="fw-bold">⏳ Temps restant :</h4>
+              <h4 className="fw-bold text-dark">⏳ Temps restant :</h4>
               <h3 className="bg-dark text-warning p-2 rounded">
                 {timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
               </h3>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import { FaUser, FaQuestionCircle } from 'react-icons/fa';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { SiLapce } from "react-icons/si";
 
 const NavigationBar: React.FC = () => {
 
@@ -39,7 +40,10 @@ const NavigationBar: React.FC = () => {
     style={{ transition: "background-color 50s ease-in-out" }}>
       <Container className=''>
         {/* Logo ou nom de l'app */}
-        <Navbar.Brand href="/"  className='h1 fw-bold' >AchiOni</Navbar.Brand>
+        <Navbar.Brand href="/"  className='h1 fw-bold' >Achi
+                      <span className="text-warning fw-bold">Oni</span>
+                      <SiLapce className='me-3' />
+                  </Navbar.Brand>
         
         {/* Bouton pour le menu en version mobile */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

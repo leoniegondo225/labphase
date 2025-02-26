@@ -6,6 +6,10 @@ import { useRef } from 'react';
 import { Button, Group } from '@mantine/core';
 import { IconPhoto, IconUpload, IconBrandTelegram } from '@tabler/icons-react';
 import "../NavbarSimpleColored.module.css"
+import { FileUploaderRegular } from "@uploadcare/react-uploader/next";
+import "@uploadcare/react-uploader/core.css";
+import { OutputCollectionState, OutputCollectionStatus } from '@uploadcare/react-uploader';
+
 
 
 
@@ -17,7 +21,7 @@ function AddProductForm() {
     const [nomProduit, setNomProduit] = useState("")
     const [descriptionProduit, setDescriptionProduit] = useState("")
     const [prix, setPrix] = useState("")
-    const [typeVente, setTypeVente] = useState("")
+    const [namestore, setNameStore] = useState("")
     const [devise, setDevise] = useState("")
     const [qte, setQte] = useState("")
     const [date, setDate] = useState("")
@@ -26,6 +30,15 @@ function AddProductForm() {
     const [message, setMessage] = useState("")
 
     const [user, setUser] = useState(localStorage.getItem("usersInfos")) || null
+
+    const[files,setFiles]= useState("")
+
+    const recupimage=(e:OutputCollectionState<OutputCollectionStatus, "maybe-has-group">)=>{
+        if(e.allEntries[0].uuid){
+            setFiles(e.allEntries[0]?.cdnUrl!)
+        }
+    }
+
 
     const add = () => {
         if (user) {
@@ -45,7 +58,8 @@ function AddProductForm() {
         setLoad(true)
         setMessage("")
         try {
-            const data = { nomProduit, codeProduit, descriptionProduit, prix, typeVente, devise, qte, date }
+            if (files && files!==undefined && files!== "") {
+                const data = { nomProduit, codeProduit, descriptionProduit, prix,namestore, devise, qte, date , photo:files}
             const req = await fetch("/api/product-routes/add-product", {
                 headers: { "Content-type": "application/json" },
                 method: "POST",
@@ -57,10 +71,13 @@ function AddProductForm() {
             setLoad(false)
             if (res && res.data) {
                 localStorage.setItem("product",JSON.stringify(res.data))
-                setMessage("Données trouvée")
+                setMessage("Artcile Ajouté aevc succés")
                 console.log(res)
             } else {
                 setMessage("Données non trouvée")
+            }
+            }else {
+                setMessage("photo du produit requise")
             }
         } catch (error) {
             console.log(error)
@@ -94,23 +111,8 @@ function AddProductForm() {
                     <div className="col-lg-5">
                         <Card shadow="sm" padding="lg" radius="md" withBorder className="card h-100 d-flex justify-content-center align-items-center p-3" >
                             <Card.Section className="card-body d-flex justify-content-center align-items-center flex-column">
-                                <Dropzone openRef={openRef} onDrop={() => { }}
-                                    radius="md"
-                                    maxSize={30 * 1024 ** 2}
-                                    className="dropzone-dashed" >
-
-                                    <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: 'none' }}>
-
-                                        <div>
-                                            <IconPhoto size={50} />
-                                            <Text size="sm" c="dimmed" className='mb-2' inline mt={7}>
-                                                Glissez-déposez des images ici ou cliquez pour sélectionner des fichiers.
-                                            </Text>
-                                            <Button variant="light" leftSection={<IconUpload size={14} />} onClick={() => openRef.current?.()}>Sélectionner un fichier</Button>
-                                        </div>
-
-                                    </Group>
-                                </Dropzone>
+                            <IconPhoto size={50} />
+                            <FileUploaderRegular onChange={(e)=>recupimage(e)} pubkey="b20e70555b92917523f6" />
                                 <Text size="sm" c="dimmed" className='mb-3' inline mt={7}>
                                     Ajoutez autant de fichiers que vous le souhaitez, chaque fichier ne doit pas dépasser 5 Mo.
                                 </Text>
@@ -141,11 +143,8 @@ function AddProductForm() {
                                         <input type="number" min={0} className="form-control p-2" id="qte" placeholder="Entrer la quantité du produit" onChange={(e) => Number(setQte(e.target.value))} />
                                     </div>
                                     <div className="col-lg-12 mb-3">
-                                        <select className="form-select p-2 mt-4" aria-label="Default select example" onChange={(e) => setTypeVente(e.target.value)} >
-                                            <option >Type de vente</option>
-                                            <option value="vente en détail">Vente en détail</option>
-                                            <option value="vente en gros">Vente en gros</option>
-                                        </select>
+                                    <label htmlFor="namestore" className="form-label" >Nom de votre boutique</label>
+                                    <input type="string"  className="form-control p-2" id="namestore" placeholder="Entrer le nom de votre boutique" onChange={(e) => String(setNameStore(e.target.value))} />
                                     </div>
                                 </div>
                             </Card.Section>
@@ -160,9 +159,9 @@ function AddProductForm() {
                                     <div className="col-lg-12 mb-3  ">
                                         <select className="form-select p-2 mt-4" aria-label="Default select example" >
                                             <option >Sélectionne une categorie</option>
-                                            <option value="1">Category 1</option>
-                                            <option value="2">Category 2</option>
-                                            <option value="3">Category 3</option>
+                                            <option value="Télephone">Télephone</option>
+                                            <option value="Ordinateur">Ordinateur</option>
+                                            <option value="Accessoire">Accessoire</option>
                                         </select>
                                     </div>
                                     <div className="col-lg-12 mb-3">
@@ -187,8 +186,8 @@ function AddProductForm() {
                         )
                     }
                 </div>
-                <div className="mt-5">
-                    {message && <p className='btn btn-dark text-white fw-bold'>{message}</p>}
+                <div className="mt-2">
+                    {message && <p className='btn btn-succes text-white fw-bold'>{message}</p>}
                 </div>
             </form >
         </div >
